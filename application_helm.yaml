@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: 
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: helm1
+    server: "https://kubernetes.default.svc"
+  project: helm
+  source: 
+    path: helm-application
+    repoURL: "https://github.com/Shobhit29/argocd-learning"
+    targetRevision: master
+    helm:
+      releaseName: test
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  
