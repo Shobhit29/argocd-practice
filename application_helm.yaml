@@ -9,11 +9,14 @@ spec:
     server: "https://kubernetes.default.svc"
   project: helm
   source: 
-    path: helm-application
+    path: helm_application
     repoURL: "https://github.com/Shobhit29/argocd-learning"
     targetRevision: main
     helm:
       releaseName: test
+      parameters:
+      - name: "serviceAccount.create"
+        value: "false"  
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
